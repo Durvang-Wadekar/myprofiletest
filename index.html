@@ -1,1 +1,694 @@
-<h1> Hello From Universe </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile | IT Student & Developer</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0b1020;
+      --card: #121a2e;
+      --card-2: #18223a;
+      --text: #f5f7ff;
+      --muted: #aab4cc;
+      --primary: #6c63ff;
+      --secondary: #22d3ee;
+      --border: rgba(255,255,255,0.09);
+      --max-width: 1100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(108,99,255,0.18), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(34,211,238,0.12), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(11,16,32,0.78);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid rgba(34,211,238,0.3);
+      background: rgba(34,211,238,0.07);
+      border-radius: 999px;
+      color: var(--secondary);
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #8b7cff, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .btn {
+      padding: 12px 19px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, background 0.2s;
+      font-weight: 650;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+    }
+
+    .profile-card {
+      background: linear-gradient(145deg, rgba(108,99,255,0.16), rgba(34,211,238,0.05));
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 24px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.25);
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: white;
+    }
+
+    .profile-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 5px;
+    }
+
+    .profile-card .role {
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .quick-info {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quick-info div {
+      padding: 11px 13px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 35px;
+    }
+
+    .section-heading span {
+      color: var(--secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-top: 7px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 25px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--card-2);
+      border: 1px solid var(--border);
+      color: #dce3f5;
+      font-size: 0.9rem;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-number {
+      color: var(--secondary);
+      font-size: 0.8rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .project h3 {
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      margin-bottom: 17px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .project-tags span {
+      font-size: 0.75rem;
+      padding: 5px 9px;
+      border-radius: 6px;
+      background: rgba(108,99,255,0.13);
+      color: #cbd0ff;
+    }
+
+    /* Education */
+    .timeline {
+      display: grid;
+      gap: 15px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      padding: 20px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .timeline-date {
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+      padding-bottom: 55px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 800px) {
+      .hero-grid,
+      .about-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: var(--bg);
+        flex-direction: column;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">My<span>Profile</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">IT Student • Developer • Learner</span>
+
+          <h1>
+            Hi, I'm <br />
+            <span class="gradient-text">Your Name.</span>
+          </h1>
+
+          <p>
+            I'm a second-year Information Technology student interested in
+            web development, problem solving, AI-powered applications and
+            building practical projects through hands-on learning.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="#contact">Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="avatar">YN</div>
+
+          <h3>Your Name</h3>
+          <div class="role">Information Technology Student</div>
+
+          <div class="quick-info">
+            <div>🎓 Second Year • IT</div>
+            <div>💻 Web Development</div>
+            <div>⚡ JavaScript & React</div>
+            <div>🧠 Learning Data & AI</div>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span>01 — About</span>
+          <h2>A little about me.</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="card">
+            <h3>Who I Am</h3>
+            <p>
+              I am an Information Technology student who enjoys learning
+              through projects. My current focus is strengthening my
+              programming fundamentals while building modern web applications.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>What I'm Working On</h3>
+            <p>
+              I'm currently improving my JavaScript and React skills, exploring
+              backend development, and participating in hackathons to turn
+              ideas into working prototypes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <span>02 — Skills</span>
+          <h2>Technologies I'm learning.</h2>
+        </div>
+
+        <div class="card">
+          <div class="skills">
+            <span class="skill">Python</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">React</span>
+            <span class="skill">C</span>
+            <span class="skill">C++</span>
+            <span class="skill">Java</span>
+            <span class="skill">DBMS</span>
+            <span class="skill">Git & GitHub</span>
+            <span class="skill">Data Structures</span>
+            <span class="skill">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span>03 — Projects</span>
+          <h2>Things I've built.</h2>
+        </div>
+
+        <div class="projects">
+
+          <article class="card project">
+            <div class="project-number">PROJECT 01</div>
+            <h3>EcoConnect</h3>
+            <p>
+              A waste-to-wealth platform concept connecting industries,
+              waste suppliers and transporters to support industrial
+              symbiosis and circular resource flows.
+            </p>
+            <div class="project-tags">
+              <span>React</span>
+              <span>JavaScript</span>
+              <span>EdTech / Sustainability</span>
+              <span>Hackathon</span>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-number">PROJECT 02</div>
+            <h3>EduVerse</h3>
+            <p>
+              An AI-powered school companion concept designed to connect
+              academic tracking, attendance, communication and personalized
+              recommendations.
+            </p>
+            <div class="project-tags">
+              <span>AI</span>
+              <span>Education</span>
+              <span>Dashboard</span>
+              <span>Hackathon</span>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-number">PROJECT 03</div>
+            <h3>Library Management System</h3>
+            <p>
+              A programming project focused on managing books and library
+              operations while practicing programming fundamentals and
+              structured problem solving.
+            </p>
+            <div class="project-tags">
+              <span>C</span>
+              <span>Programming</span>
+              <span>Database Concepts</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <span>04 — Education</span>
+          <h2>My academic journey.</h2>
+        </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-date">Current</div>
+            <div>
+              <h3>Bachelor's in Information Technology</h3>
+              <p>
+                Currently pursuing undergraduate studies with a focus on
+                programming, data structures, databases, web technologies
+                and software development.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">Earlier</div>
+            <div>
+              <h3>Foundation in Programming</h3>
+              <p>
+                Built fundamentals in programming, problem solving,
+                computational thinking and core computer science concepts.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span>05 — Contact</span>
+          <h2>Let's connect.</h2>
+        </div>
+
+        <p>
+          Interested in collaborating, discussing a project, or simply
+          connecting? You can reach me through the links below.
+        </p>
+
+        <div class="buttons" style="justify-content:center;">
+          <!-- Replace these links with your real profiles -->
+          <a class="btn btn-primary" href="mailto:your.email@example.com">
+            Email Me
+          </a>
+
+          <a class="btn btn-secondary"
+             href="https://github.com/"
+             target="_blank"
+             rel="noopener">
+            GitHub
+          </a>
+
+          <a class="btn btn-secondary"
+             href="https://www.linkedin.com/"
+             target="_blank"
+             rel="noopener">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Your Name. Built with HTML, CSS & JavaScript.
+    </div>
+  </footer>
+
+  <script>
+    // Mobile navigation
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+      });
+    });
+
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
